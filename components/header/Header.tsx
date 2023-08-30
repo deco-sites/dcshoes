@@ -5,6 +5,7 @@ import type { Image } from "deco-sites/std/components/types.ts";
 import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
+import UpperNavbar from "deco-sites/staging/components/header/UpperNavbar.tsx";
 
 export interface NavItem {
   label: string;
@@ -46,6 +47,9 @@ export interface Props {
 
   /** @title Logo */
   logo?: { src: Image; alt: string };
+
+  links: string[]
+  leftMsg: string
 }
 
 function Header({
@@ -55,6 +59,8 @@ function Header({
   navItems = [],
   suggestions,
   logo,
+  links,
+  leftMsg
 }: Props) {
   const searchbar = { ..._searchbar, products, suggestions };
   return (
@@ -66,6 +72,7 @@ function Header({
         >
           <div class="bg-base-100 fixed w-full z-50">
             <Alert alerts={alerts} />
+            <UpperNavbar links={links} leftMsg={leftMsg} />
             <Navbar items={navItems} searchbar={searchbar} logo={logo} />
           </div>
         </Drawers>
