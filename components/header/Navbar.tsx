@@ -9,6 +9,97 @@ import Image from "deco-sites/std/components/Image.tsx";
 import type { INavItem } from "./NavItem.tsx";
 import NavItem from "./NavItem.tsx";
 import { navbarHeight } from "./constants.ts";
+import Logo from "./../Logo.tsx";
+
+const mockItems = [
+  {
+    label: "MASCULINO",
+    href: "#",
+    children: [{
+      label: "VESTUÁRIO",
+      href: "#",
+      children: [
+        {
+          label: "Camiseta",
+          href: "#",
+        },
+        { label: "Regata", href: "#" },
+        { label: "Moletom", href: "#" },
+        { label: "Jaqueta", href: "#" },
+        { label: "Calça E Jeans", href: "#" },
+        { label: "Bermuda", href: "#" },
+        { label: "Plus Size", href: "#" },
+        { label: "Camisa e Polo", href: "#" },
+      ],
+    }, {
+      label: "ACESSÓRIOS",
+      href: "#",
+      children: [
+        { label: "Boné", href: "#" },
+        { label: "Chapéu", href: "#" },
+        { label: "Meias E Cuecas", href: "#" },
+        { label: "Mochila", href: "#" },
+        { label: "Carteira E Cinto", href: "#" },
+        { label: "Pochete", href: "#" },
+      ],
+    }, {
+      label: "COLEÇÕES",
+      href: "#",
+      children: [
+        { label: "Bronze 56K", href: "#" },
+        { label: "Skateboarding", href: "#" },
+        { label: "Star Wars", href: "#" },
+        { label: "Venture", href: "#" },
+        { label: "DEADPOOL", href: "#" },
+        { label: "Kevin Bilyeu", href: "#" },
+        { label: "Cafe", href: "#" },
+        { label: "Truth Supertour Jersey", href: "#" },
+        { label: "Mandalorian", href: "#" },
+      ],
+    }],
+  },
+  {
+    label: "FEMININO",
+    href: "#",
+    children: [{
+      label: "VESTUÁRIO",
+      href: "#",
+      children: [{
+        label: "Moletom",
+        href: "#",
+      }, {
+        label: "Shorts",
+        href: "#",
+      }, {
+        label: "Tops e Camisetas",
+        href: "#",
+      }],
+    }],
+  },
+  {
+    label: "JUVENIL",
+    href: "#",
+    children: [{
+      label: "VESTUÁRIO",
+      href: "#",
+    }],
+  },
+  {
+    label: "CALÇADOS",
+    href: "#",
+    children: [{
+      label: "SNEAKERS",
+      href: "#",
+    }, {
+      label: "VER TODOS",
+      href: "#",
+    }],
+  },
+  {
+    label: "OUTLET",
+    href: "#",
+  },
+];
 
 function Navbar({ items, searchbar, logo }: {
   items: INavItem[];
@@ -31,7 +122,13 @@ function Navbar({ items, searchbar, logo }: {
             style={{ minHeight: navbarHeight }}
             aria-label="Store logo"
           >
-            <Image src={logo.src} alt={logo.alt} width={126} height={16} />
+            <Image
+              class="w-16 h-9"
+              src={logo.src}
+              alt={logo.alt}
+              width={65}
+              height={35}
+            />
           </a>
         )}
 
@@ -43,20 +140,26 @@ function Navbar({ items, searchbar, logo }: {
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden md:flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6">
+      <div class="hidden md:flex flex-row justify-between items-center border-b border-base-200 w-full px-[30px]">
         <div class="flex-none w-44">
           {logo && (
             <a
               href="/"
               aria-label="Store logo"
-              class="block px-4 py-3 w-[160px]"
+              class="block px-4  w-[140px] h-[35px]"
             >
-              <Image src={logo.src} alt={logo.alt} width={126} height={16} />
+              <Image
+                class="w-[45px] h-[35px]"
+                src={logo.src}
+                alt={logo.alt}
+                width={65}
+                height={35}
+              />
             </a>
           )}
         </div>
         <div class="flex-auto flex justify-center">
-          {items.map((item) => <NavItem item={item} />)}
+          {mockItems.map((item) => <NavItem item={item} />)}
         </div>
         <div class="flex-none w-44 flex items-center justify-end gap-2">
           <SearchButton />

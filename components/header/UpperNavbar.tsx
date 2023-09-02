@@ -17,7 +17,6 @@ function UpperNavbar({ links, leftMsg }: {
       >
         <MenuButton />
 
-
         <div class="flex gap-1">
           <SearchButton />
           {PLATFORM === "vtex" && <CartButtonVTEX />}
@@ -26,18 +25,20 @@ function UpperNavbar({ links, leftMsg }: {
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden md:flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 pr-6 h-10">
+      <div class="hidden md:flex flex-row justify-between items-center w-full px-[30px] h-10">
         <div class="flex-none w-1/3">
-          <p>{leftMsg}</p>
+          <p class="text-xs text-black">{leftMsg}</p>
         </div>
         <div class="flex-none w-2/3 flex items-center justify-end gap-2">
-          {links?.map((item) => <p>{item}</p>)}
-          <a
-            class="btn btn-circle btn-sm btn-ghost"
-            href="/login"
-            aria-label="Log in"
-          >
-          </a>
+          {links?.map((item) => (
+            <a
+              alt={item}
+              title={item}
+              class="text-[#181812] text-xs uppercase cursor-pointer"
+            >
+              {item}
+            </a>
+          ))}
         </div>
       </div>
     </>
